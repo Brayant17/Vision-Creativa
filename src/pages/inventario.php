@@ -2,7 +2,12 @@
 <?php include_once '../layouts/others/menu.php' ?>
 <?php include_once '../../resources/php/inventario.php' ?>
 <div class="container">
-    <h2>Inventario</h2>
+    <div class="d-flex justify-content-between">
+        <h2>Inventario</h2>
+        <button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#exampleModal">Nuevo
+            Articulo</button>
+    </div>
+
     <table class="table p-2">
         <thead>
             <tr>
@@ -15,7 +20,7 @@
             </tr>
         </thead>
         <tbody>
-            <?php foreach (Inventario::getAllItems() as $item) : ?>
+            <?php foreach (Inventario::getAllItems() as $item): ?>
                 <tr>
                     <th scope="row"><?= $item['id_inventario'] ?></th>
                     <td><?= $item['nombre'] ?></td>
@@ -23,7 +28,8 @@
                     <td><?= $item['stock'] ?></td>
                     <td><?= $item['sku'] ?></td>
                     <td class="d-flex">
-                        <button type="button" class="btn btn-primary edit-btton" data-id="<?= $item['id_inventario'] ?>" data-bs-toggle="modal" data-bs-target="#exampleModal">Editar</button>
+                        <button type="button" class="btn btn-primary edit-btton" data-id="<?= $item['id_inventario'] ?>"
+                            data-bs-toggle="modal" data-bs-target="#exampleModal">Editar</button>
                         <button type="button" class="btn btn-danger">Eliminar</button>
                     </td>
                 </tr>
@@ -41,7 +47,24 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                ...
+                <form>
+                    <div class="mb-3">
+                        <label for="nombreItem" class="form-label">Nombre</label>
+                        <input type="email" class="form-control" id="nombreItem" aria-describedby="emailHelp" name="nombre">
+                    </div>
+                    <div class="mb-3">
+                        <label for="stock" class="form-label">Stock</label>
+                        <input type="number" class="form-control" id="stock" name="stock">
+                    </div>
+                    <div class="mb-3">
+                        <label for="sku" class="form-label">SKU</label>
+                        <input type="text" class="form-control" id="sku" name="sku">
+                    </div>
+                    <div class="mb-3">
+                        <label for="descripcion" class="form-label">Descripcion</label>
+                        <textarea class="form-control" id="descripcion" rows="3" name="descripcion"></textarea>
+                    </div>
+                </form>
             </div>
             <div class="modal-footer">
                 <button type="button" id="edit-button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>

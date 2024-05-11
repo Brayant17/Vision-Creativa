@@ -1,6 +1,7 @@
 document.getElementById("btn__iniciar-sesion").addEventListener("click",iniciarSesion);
 document.getElementById("btn__registrarse").addEventListener("click",registro);
 
+const url = "http://localhost/vision-creativa/"
 
 
 const contenedor_login_registro = document.querySelector(".contenedor__login-registro");
