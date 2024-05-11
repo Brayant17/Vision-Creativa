@@ -13,6 +13,7 @@
         $direccion = $_POST['direccion'];
         $sql = "INSERT INTO empleado (nombre, apellido, email, numero, password, direccion) VALUES ('$nombre', '$apellido', '$email', '$numero', '$password', '$direccion')";
         $conexion->query($sql);
+        header('Location: ../../index.php');
     }
     
     if(isset($_POST['login'])){

@@ -36,4 +36,4 @@
             </div>
         </div>
     </main>
-<?php include_once './src/layouts/footer.php' ?>
+<?php include_once './src/layouts/login/footer.php' ?>
