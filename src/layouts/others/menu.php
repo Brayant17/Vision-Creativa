@@ -13,6 +13,9 @@
                     <a class="nav-link" href="#">Inventario</a>
                 </li>
                 <li class="nav-item">
+                    <a class="nav-link" href="#">Usuarios</a>
+                </li>
+                <li class="nav-item">
                     <a class="nav-link" href="#">Productos</a>
                 </li>
                 <li class="nav-item">
