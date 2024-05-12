@@ -30,7 +30,7 @@
                     <td class="d-flex">
                         <button type="button" class="btn btn-primary edit-btton" data-id="<?= $item['id_inventario'] ?>"
                             data-bs-toggle="modal" data-bs-target="#exampleModal">Editar</button>
-                        <button type="button" class="btn btn-danger">Eliminar</button>
+                        <button type="button" class="btn btn-danger deleteItem" data-idItem="<?= $item['id_inventario'] ?>">Eliminar</button>
                     </td>
                 </tr>
             <?php endforeach ?>

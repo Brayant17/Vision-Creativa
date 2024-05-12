@@ -44,5 +44,13 @@
         }
         
     }
+
+    if($metodo == 'deleteItem'){
+        $idItem = intval($_POST['idItem']);
+        $sql = "DELETE FROM `inventario` WHERE id_inventario = $idItem";
+        $result = $db->query($sql);
+        $data = array('succes'=>$result);
+    }
+
     header('Content-Type: application/json');
     echo json_encode($data);

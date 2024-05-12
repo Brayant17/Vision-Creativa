@@ -91,7 +91,7 @@ function reloadTable() {
             <td class="d-flex">
                 <button type="button" class="btn btn-primary edit-btton" data-id="${element.id}"
                     data-bs-toggle="modal" data-bs-target="#exampleModal">Editar</button>
-                <button type="button" class="btn btn-danger" data-id="${element.id}">Eliminar</button>
+                <button type="button" class="btn btn-danger deleteItem" data-iditem="${element.id}">Eliminar</button>
             </td>
           </tr>`
       })
@@ -108,3 +108,17 @@ function resetModal() {
   $('body').removeClass('modal-open');
   $('.modal-backdrop').remove();
 }
+
+$(document).on('click', '.deleteItem', function () {
+  const idItem = $(this).data('iditem')
+  $.ajax({
+    method: 'POST',
+    url: url + "resources/php/fetch.php",
+    data: {metodo: 'deleteItem', idItem: idItem},
+    context: document.body
+  }).done(function (response) {
+    console.log(response)
+    reloadTable();
+    resetModal();
+  });
+});
