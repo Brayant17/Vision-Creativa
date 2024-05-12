@@ -1,1 +1,1 @@
-export const url = "http://localhost/vision-creativa/"
+export const url = "http://localhost/fime/vision-creativa/"

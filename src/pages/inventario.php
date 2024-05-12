@@ -4,7 +4,7 @@
 <div class="container">
     <div class="d-flex justify-content-between">
         <h2>Inventario</h2>
-        <button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#exampleModal">Nuevo
+        <button type="button" class="btn btn-info" data-metodo="nuevoItem" data-bs-toggle="modal" data-bs-target="#exampleModal">Nuevo
             Articulo</button>
     </div>
 
@@ -19,7 +19,7 @@
                 <th scope="col">Accion</th>
             </tr>
         </thead>
-        <tbody>
+        <tbody id="tbody">
             <?php foreach (Inventario::getAllItems() as $item): ?>
                 <tr>
                     <th scope="row"><?= $item['id_inventario'] ?></th>
@@ -68,7 +68,7 @@
             </div>
             <div class="modal-footer">
                 <button type="button" id="edit-button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Save changes</button>
+                <button type="button" class="btn btn-primary" id="saveChangesInventario">Save changes</button>
             </div>
         </div>
     </div>
