@@ -1,7 +1,7 @@
 import { url } from "./constantes.js"
 
 const buttonSave = $('#saveChangesInventario');
-const myModalEl = document.getElementById('modal-empleado')
+const myModalEmpleado = document.getElementById('modal-empleado')
 const nombreUsuario = $('#nombreUsuario');
 const apellido = $('#apellido');
 const email = $('#email');
@@ -9,7 +9,7 @@ const numero = $('#numero');
 const direccion = $('#direccion');
 
 
-myModalEl.addEventListener('show.bs.modal', event => {
+$('#modal-empleado').on('show.bs.modal', event => {
   // do something...
   const idItem = event.relatedTarget.dataset.id;
   if (idItem > 0) {

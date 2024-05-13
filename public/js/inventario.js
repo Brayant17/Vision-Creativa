@@ -7,7 +7,7 @@ const sku = $('#sku');
 const descripcion = $('#descripcion');
 
 
-myModalEl.addEventListener('show.bs.modal', event => {
+$('#exampleModal').on('show.bs.modal', event => {
   // do something...
   const idItem = event.relatedTarget.dataset.id;
   if (idItem > 0) {

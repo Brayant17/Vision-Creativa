@@ -49,4 +49,25 @@ class Ventas{
     public static function updateVenta(){
         var_dump($_POST);
     }
+
+    public static function setVenta(){
+        var_dump($_POST);
+        $cliente = $_POST["cliente"];
+        $empleado = $_POST["empleado"];
+        $cantidad = $_POST["cantidad"];
+
+        // creamos nuevo cliente
+        $clienteNuevo = self::setNewClient($cliente);
+        var_dump($clienteNuevo);
+
+
+    }
+
+    public static function setNewClient($nombre){
+        $db = db();
+        $sql = "INSERT INTO `cliente`(`nombre`) VALUES ('$nombre')";
+        $result = $db->query($sql);
+        return $result;
+    }
+
 }
