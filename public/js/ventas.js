@@ -41,10 +41,8 @@ $('#modal-ventas').on('show.bs.modal', (event) => {
                 url: url + "resources/php/fetching.php",
                 data: { controller: 'Ventas', metodo: 'setVenta', cliente: cliente.val(), empleado: empleado.val(), cantidad: cantidad.val() },
             }).done(function (response) {
-                console.log(response)
-                cliente.val(response.NombreCliente)
-                empleado.val(response.nombreEmpleado)
-                cantidad.val(response.cantidad)
+                console.log(response);
+                $('#modal-ventas').modal('hide')
             })
         })
     }

@@ -52,20 +52,21 @@ class Ventas{
 
     public static function setVenta(){
         $db = db();
-        var_dump($_POST);
         $cliente = $_POST["cliente"];
         $empleado = $_POST["empleado"];
-        $cantidad = $_POST["cantidad"];
+        $cantidad = intval($_POST["cantidad"]);
 
         // creamos nuevo cliente
-        $idCliente = self::setNewClient($cliente);
+        $idCliente = intval(self::setNewClient($cliente));
 
         // buscamos el empleado
-        $idEmpleado = self::searchEmpleado($empleado);
-        var_dump($idEmpleado);
-        // $sql = "INSERT INTO `venta`(`clienteID`, `empleadoID`, `cantidad`) VALUES ($idCliente,'[value-2]','[value-3]','[value-4]')";
-
+        $idEmpleado = intval(self::searchEmpleado($empleado));
         
+        $sql = "INSERT INTO venta (`clienteID`, `empleadoID`, `cantidad`) VALUES ($idCliente, $idEmpleado, $cantidad)";
+        
+        $result = $db->query($sql);
+        
+        return $result;
 
 
     }
@@ -73,7 +74,7 @@ class Ventas{
     public static function setNewClient($nombre){
         $db = db();
         $sql = "INSERT INTO `cliente`(`nombre`) VALUES ('$nombre')";
-        $result = $db->query($sql);
+        $db->query($sql);
         $idCliente = $db->insert_id;
         return $idCliente;
     }
@@ -82,8 +83,11 @@ class Ventas{
     public static function searchEmpleado($empleado){
         $db = db();
         $sql = "SELECT empleadoID FROM `empleado` WHERE nombre LIKE '%$empleado%'";
-        $result = $db->query($sql);
-        $result = $result->fetch_assoc();
+        $query = $db->query($sql);
+        $result = $query->fetch_assoc();
+        if(is_null($result)){
+            return 1;
+        }
         return $result['empleadoID'];
     }
 }
