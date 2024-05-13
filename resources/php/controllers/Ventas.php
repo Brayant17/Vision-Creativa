@@ -51,14 +51,21 @@ class Ventas{
     }
 
     public static function setVenta(){
+        $db = db();
         var_dump($_POST);
         $cliente = $_POST["cliente"];
         $empleado = $_POST["empleado"];
         $cantidad = $_POST["cantidad"];
 
         // creamos nuevo cliente
-        $clienteNuevo = self::setNewClient($cliente);
-        var_dump($clienteNuevo);
+        $idCliente = self::setNewClient($cliente);
+
+        // buscamos el empleado
+        $idEmpleado = self::searchEmpleado($empleado);
+        var_dump($idEmpleado);
+        // $sql = "INSERT INTO `venta`(`clienteID`, `empleadoID`, `cantidad`) VALUES ($idCliente,'[value-2]','[value-3]','[value-4]')";
+
+        
 
 
     }
@@ -67,7 +74,16 @@ class Ventas{
         $db = db();
         $sql = "INSERT INTO `cliente`(`nombre`) VALUES ('$nombre')";
         $result = $db->query($sql);
-        return $result;
+        $idCliente = $db->insert_id;
+        return $idCliente;
     }
 
+
+    public static function searchEmpleado($empleado){
+        $db = db();
+        $sql = "SELECT empleadoID FROM `empleado` WHERE nombre LIKE '%$empleado%'";
+        $result = $db->query($sql);
+        $result = $result->fetch_assoc();
+        return $result['empleadoID'];
+    }
 }

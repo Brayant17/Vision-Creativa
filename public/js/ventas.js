@@ -7,10 +7,9 @@ const empleado = $('#empleado');
 const cantidad = $('#cantidad');
 
 
-$('#modal-ventas').on('show.bs.modal', event => {
-    console.log(event)
+$('#modal-ventas').on('show.bs.modal', (event) => {
     const id = event.relatedTarget.dataset.id;
-    if (id > 0) {
+    if (id > 0 && id != undefined) {
         // modal para editar
         $.ajax({
             method: 'POST',
@@ -23,30 +22,31 @@ $('#modal-ventas').on('show.bs.modal', event => {
             cantidad.val(response.cantidad)
         });
         // al hacer click en el boton de gaurdar los cambios
-        $('#saveChanges').click(()=>{
+        $('#saveChanges').click(() => {
 
             $.ajax({
                 method: 'POST',
                 url: url + "resources/php/fetching.php",
-                data: { controller: 'Ventas', metodo: 'updateVenta', idVenta: id, cliente: cliente.val(), empleado: empleado.val(), cantidad: cantidad.val()},
+                data: { controller: 'Ventas', metodo: 'updateVenta', idVenta: id, cliente: cliente.val(), empleado: empleado.val(), cantidad: cantidad.val() },
             }).done(function (response) {
                 console.log(response)
             })
         })
     }
 
-    else{
-        console.log(cliente.val())
-        $.ajax({
-            method: 'POST',
-            url: url + "resources/php/fetching.php",
-            data: { controller: 'Ventas', metodo: 'setVenta', cliente: cliente.val(), empleado: empleado.val(), cantidad: cantidad.val() },
-        }).done(function (response) {
-            console.log(response)
-            cliente.val(response.NombreCliente)
-            empleado.val(response.nombreEmpleado)
-            cantidad.val(response.cantidad)
-        });
+    else {
+        $('#saveChanges').click(() => {
+            $.ajax({
+                method: 'POST',
+                url: url + "resources/php/fetching.php",
+                data: { controller: 'Ventas', metodo: 'setVenta', cliente: cliente.val(), empleado: empleado.val(), cantidad: cantidad.val() },
+            }).done(function (response) {
+                console.log(response)
+                cliente.val(response.NombreCliente)
+                empleado.val(response.nombreEmpleado)
+                cantidad.val(response.cantidad)
+            })
+        })
     }
 
 
