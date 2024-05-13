@@ -132,7 +132,7 @@ $(document).on('click', '.deleteItem', function () {
 $.ajax({
     method: 'POST',
     url: url + "resources/php/fetching.php",
-    data: {controller: 'Ventas', metodo: 'getAllUsers'},
+    data: {controller: 'Usuarios', metodo: 'getAllUsers'},
     context: document.body
   }).done(function (response) {
     console.log(response)
