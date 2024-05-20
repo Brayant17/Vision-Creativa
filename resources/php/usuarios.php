@@ -1,7 +1,7 @@
 <?php 
     include_once '../../config/config.php';
-    class Inventario{
-        public static function getAllItems(){
+    class Usuarios{
+        public static function getAllEmployees(){
             $db = db();
             $sql = "SELECT * FROM empleado";
             $query = $db->query($sql);

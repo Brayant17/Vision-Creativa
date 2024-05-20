@@ -21,17 +21,18 @@
             </tr>
         </thead>
         <tbody id="tbody">
-            <?php foreach (Inventario::getAllItems() as $item): ?>
+            <?php foreach (Usuarios::getAllEmployees() as $empleado): ?>
                 <tr>
-                    <th scope="row"><?= $item['id_empleado'] ?></th>
-                    <td><?= $item['nombre'] ?></td>
-                    <td><?= $item['apellido'] ?></td>
-                    <td><?= $item['email'] ?></td>
-                    <td><?= $item['direccion'] ?></td>
+                    <th scope="row"><?= $empleado['id_empleado'] ?></th>
+                    <td><?= $empleado['nombre'] ?></td>
+                    <td><?= $empleado['apellido'] ?></td>
+                    <td><?= $empleado['email'] ?></td>
+                    <td><?= $empleado['numero'] ?></td>
+                    <td><?= $empleado['direccion'] ?></td>
                     <td class="d-flex">
-                        <button type="button" class="btn btn-primary edit-btton" data-id="<?= $item['id_empleado'] ?>"
+                        <button type="button" class="btn btn-primary edit-btton" data-id="<?= $empleado['id_empleado'] ?>"
                             data-bs-toggle="modal" data-bs-target="#modal-empleado">Editar</button>
-                        <button type="button" class="btn btn-danger deleteItem" data-idItem="<?= $item['id_empleado'] ?>">Eliminar</button>
+                        <button type="button" class="btn btn-danger deleteItem" data-idItem="<?= $empleado['id_empleado'] ?>">Eliminar</button>
                     </td>
                 </tr>
             <?php endforeach ?>
