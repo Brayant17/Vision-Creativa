@@ -16,11 +16,14 @@
                     <a class="nav-link" href="../pages/usuarios.php">Usuarios</a>
                 </li>
                 <li class="nav-item">
+                    <a class="nav-link" href="../pages/ventas.php">Ventas</a>
+                </li>
+                <!-- <li class="nav-item">
                     <a class="nav-link" href="../pages/Productos.php">Productos</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="">Contacto</a>
-                </li>
+                </li> -->
             </ul>
         </div>
     </div>
