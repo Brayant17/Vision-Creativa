@@ -20,6 +20,7 @@ class Ventas{
                     'cliente' => $row['NombreCliente'],
                     'empleado' => $row['nombreEmpleado'],
                     'cantidad' => $row['cantidad'],
+                    'precio' => $row['precio'],
                 );
             }
         }
@@ -55,6 +56,7 @@ class Ventas{
         $cliente = $_POST["cliente"];
         $empleado = $_POST["empleado"];
         $cantidad = intval($_POST["cantidad"]);
+        $precio = intval($_POST["precio"]);
 
         // creamos nuevo cliente
         $idCliente = intval(self::setNewClient($cliente));
@@ -62,7 +64,7 @@ class Ventas{
         // buscamos el empleado
         $idEmpleado = intval(self::searchEmpleado($empleado));
         
-        $sql = "INSERT INTO venta (`clienteID`, `empleadoID`, `cantidad`) VALUES ($idCliente, $idEmpleado, $cantidad)";
+        $sql = "INSERT INTO venta (`clienteID`, `empleadoID`, `cantidad`, `precio`) VALUES ($idCliente, $idEmpleado, $cantidad, $precio)";
         
         $result = $db->query($sql);
         

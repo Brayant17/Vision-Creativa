@@ -56,4 +56,19 @@ class Usuarios
         $data = array('succes'=>'ok');
         return $data;
     }
+
+    public static function setNewUser(){
+        $db = db();
+        $nombre = $_POST['dataUser']["nombreUsuario"];
+        $apellido = $_POST['dataUser']["apellido"];
+        $email = $_POST['dataUser']["emial"];
+        $numero = $_POST['dataUser']["numero"];
+        $password = password_hash($_POST['dataUser']["password"], PASSWORD_BCRYPT);
+        $direccion = $_POST['dataUser']["direccion"];
+
+        $sql = "INSERT INTO `empleado`(`nombre`, `apellido`, `email`, `numero`, `password`, `direccion`) VALUES ('$nombre','$apellido','$email','$numero','$password','$direccion')";
+        $db->query($sql);
+        $data = array('succes'=>'ok');
+        return $data;
+    }
 }

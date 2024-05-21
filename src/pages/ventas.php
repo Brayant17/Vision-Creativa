@@ -14,6 +14,7 @@
                 <th scope="col">Cliente</th>
                 <th scope="col">Empleado</th>
                 <th scope="col">cantidad</th>
+                <th scope="col">precio</th>
                 <th scope="col">Accion</th>
             </tr>
         </thead>
@@ -25,6 +26,7 @@
                         <td><?= $venta['cliente'] ?></td>
                         <td><?= $venta['empleado'] ?></td>
                         <td><?= $venta['cantidad'] ?></td>
+                        <td><?= $venta['precio'] ?></td>
                         <td class="d-flex">
                             <button type="button" class="btn btn-primary edit-btton" data-id="<?= $venta['id'] ?>"
                                 data-bs-toggle="modal" data-bs-target="#modal-ventas">Editar</button>
@@ -58,6 +60,10 @@
                     <div class="mb-3">
                         <label for="cantidad" class="form-label">Cantidad</label>
                         <input type="text" class="form-control" id="cantidad" name="cantidad">
+                    </div>
+                    <div class="mb-3">
+                        <label for="cantidad" class="form-label">Precio</label>
+                        <input type="number" class="form-control" id="precio" name="precio">
                     </div>
                 </form>
             </div>
