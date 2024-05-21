@@ -62,9 +62,9 @@ class Ventas{
         $idCliente = intval(self::setNewClient($cliente));
 
         // buscamos el empleado
-        $idEmpleado = intval(self::searchEmpleado($empleado));
+        // $idEmpleado = intval(self::searchEmpleado($empleado));
         
-        $sql = "INSERT INTO venta (`clienteID`, `empleadoID`, `cantidad`, `precio`) VALUES ($idCliente, $idEmpleado, $cantidad, $precio)";
+        $sql = "INSERT INTO venta (`clienteID`, `empleadoID`, `cantidad`, `precio`) VALUES ($idCliente, $empleado, $cantidad, $precio)";
         
         $result = $db->query($sql);
         
